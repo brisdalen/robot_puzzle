@@ -13,6 +13,8 @@ var moving = false
 var wait_amount = 0.0
 var direction = DIRECTION.right
 
+onready var camera = get_node("Camera2D")
+const DEFAULT_SMOOTHING_SPEED = 10.0
 onready var anim_player = get_node("AnimationPlayer")
 
 # Called when the node enters the scene tree for the first time.
@@ -100,6 +102,7 @@ func _physics_process(delta):
 	
 func die():
 	print("die() called")
+	camera.smoothing_speed = 2
 	anim_state = STATE.dying
 	wait_amount = 0
 	anim_player.play("die")
@@ -108,3 +111,4 @@ func reset_position():
 	anim_state = STATE.idle
 	position = spawn_location + Vector2(0, -70)
 	velocity = Vector2(0,0)
+	camera.smoothing_speed = DEFAULT_SMOOTHING_SPEED
