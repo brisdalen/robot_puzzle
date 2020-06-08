@@ -17,7 +17,7 @@ func _ready():
 func on_anim_started(anim_name):
 	if(anim_name == "die"):
 		print("old pos - ", player.global_position)
-		container.add_placeholder(player.global_position)
+		# container.add_placeholder(player.global_position)
 
 func on_position_reset_finished(old_pos):
 	print("position reset")

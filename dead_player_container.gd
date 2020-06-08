@@ -9,7 +9,7 @@ func add_new_dead_child(position):
 	var new = DEAD_PLAYER.instance()
 	add_child(new)
 	new.global_position = position
-	add_placeholder(position)
+	# add_placeholder(position)
 	
 func add_placeholder(position):
 	print("position passed - ", position)

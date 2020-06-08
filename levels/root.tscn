@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://root.gd" type="Script" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://dead_player_container.gd" type="Script" id=3]
 [ext_resource path="res://platform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Backgrounds/apocalypse_landscape_pixelated.png" type="Texture" id=5]
+[ext_resource path="res://LevelEnd.tscn" type="PackedScene" id=6]
 
 [node name="root" type="Node2D"]
 script = ExtResource( 1 )
@@ -17,6 +18,10 @@ script = ExtResource( 3 )
 
 [node name="StaticBody2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( 187.057, 500 )
+
+[node name="StaticBody2D3" parent="." instance=ExtResource( 4 )]
+position = Vector2( -163.923, 210.69 )
+rotation = 1.5708
 
 [node name="StaticBody2D2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 900, 500 )
@@ -39,3 +44,6 @@ motion_mirroring = Vector2( 640, 0 )
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 0, -0.333332 )
 texture = ExtResource( 5 )
+
+[node name="LevelEnd" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2702.91, 459.928 )
