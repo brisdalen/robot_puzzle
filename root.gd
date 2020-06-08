@@ -10,7 +10,7 @@ func _ready():
 	player = get_node("player")
 	player.connect("position_reset_finished", self, "on_position_reset_finished")
 	player_animator = player.get_child(1)
-	player_animator.connect("animation_finished", self, "on_anim_finished")
+#	player_animator.connect("animation_finished", self, "on_anim_finished")
 	player_animator.connect("animation_started", self, "on_anim_started")
 	container = get_node("dead_player_container")
 
