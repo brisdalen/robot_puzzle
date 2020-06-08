@@ -168,8 +168,8 @@ smoothing_enabled = true
 smoothing_speed = 10.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-amount = 10
-lifetime = 3.67
+amount = 6
+lifetime = 7.0
 speed_scale = 3.44
 local_coords = false
 texture = ExtResource( 3 )

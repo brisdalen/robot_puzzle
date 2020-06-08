@@ -17,10 +17,12 @@ onready var camera = get_node("Camera2D")
 const DEFAULT_SMOOTHING_SPEED = 10.0
 onready var anim_player = get_node("AnimationPlayer")
 
+signal position_reset_finished(old_pos)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	anim_state = STATE.idle
-	spawn_location = self.position
+	spawn_location = self.global_position
 	anim_player.connect("animation_finished", self, "on_animation_finished")
 	
 func on_animation_finished(anim_name):
@@ -108,7 +110,10 @@ func die():
 	anim_player.play("die")
 	
 func reset_position():
+	print("reset_position() called")
 	anim_state = STATE.idle
+	var old_pos = self.global_position
 	position = spawn_location + Vector2(0, -70)
 	velocity = Vector2(0,0)
 	camera.smoothing_speed = DEFAULT_SMOOTHING_SPEED
+	emit_signal("position_reset_finished", old_pos)
