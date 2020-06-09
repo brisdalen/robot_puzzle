@@ -4,7 +4,8 @@ var player
 var container
 var player_animator
 var level_end
-onready var next_level = load("res://levels/level_1.tscn")
+# Can this be streamlined?
+onready var next_level = load("res://levels/level_2.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,12 +13,11 @@ func _ready():
 	player = get_node("player")
 	player.connect("position_reset_finished", self, "on_position_reset_finished")
 	player_animator = player.get_child(1)
-#	player_animator.connect("animation_finished", self, "on_anim_finished")
 	player_animator.connect("animation_started", self, "on_anim_started")
 	container = get_node("dead_player_container")
-	level_end = get_node("LevelEnd2")
+	level_end = get_node("LevelEnd")
 	level_end.connect("level_completed", self, "on_level_completed")
-	print("level end connected")
+	#print("level end connected")
 
 func on_anim_started(anim_name):
 	if(anim_name == "die"):

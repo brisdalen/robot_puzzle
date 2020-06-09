@@ -101,6 +101,8 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	if anim_state == STATE.idle:
 		wait_amount += delta
+	if(global_position.y > 2000):
+		reset_position_no_animation()
 	
 func die():
 	print("die() called")
@@ -108,12 +110,18 @@ func die():
 	anim_state = STATE.dying
 	wait_amount = 0
 	anim_player.play("die")
-	
+
+# Used to reset the player position after the dying animation, and emitting the "position_reset_finished" signal
 func reset_position():
 	print("reset_position() called")
+	var old_pos = reset_position_no_animation()
+	emit_signal("position_reset_finished", old_pos)
+
+# Used to reset the player position instantly back to it's spawn point, leaving no body
+func reset_position_no_animation():
 	anim_state = STATE.idle
 	var old_pos = self.global_position
 	position = spawn_location + Vector2(0, -70)
 	velocity = Vector2(0,0)
 	camera.smoothing_speed = DEFAULT_SMOOTHING_SPEED
-	emit_signal("position_reset_finished", old_pos)
+	return old_pos

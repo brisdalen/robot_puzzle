@@ -22,6 +22,9 @@ func _ready():
 func _physics_process(delta):
 	velocity.y = velocity.y + DOWNWARD_FORCE + delta * GRAVITY * gravity_modifier
 	velocity = move_and_slide(velocity, Vector2(0, -1))
+	if(global_position.y > 1000):
+		queue_free()
+		print("dead body removed")
 	
 func on_timeout_completed():
 	$CollisionShape2D.disabled = false
